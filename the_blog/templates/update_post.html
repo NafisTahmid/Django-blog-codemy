@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title_block %}
+    Update the post...
+{% endblock  %}
+{% block body_block %}
+<h3>Update post...</h3>
+<div class="form-body">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-secondary">Update post</button>
+    </form>
+</div>
+
+{% endblock  %}
