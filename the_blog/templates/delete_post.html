@@ -3,13 +3,19 @@
     Delete the post...
 {% endblock  %}
 {% block body_block %}
+{% if user.is_authenticated %}
 <h3>Delete post: {{ post.title }} </h3>
 <strong>Are you sure you want to delete?</strong>
 <div class="form-group">
     <form method="POST">
         {% csrf_token %}
-        <a class="btn btn-danger">Delete</a>
+        <button class="btn btn-danger">Delete</button>
     </form>
 </div>
+
+{% else %}
+<div class="alert alert-danger">You're not allowed to see this page and you know it. Please login. :') </div>
+{% endif %}
+
 
 {% endblock  %}

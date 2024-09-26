@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block body_block %}
+<ul>
+    {% for category in categories %}
+        <li><h4><a href="{% url 'category' category|slugify %}">{{ category }}</a></h4></li>
+    {% endfor %}
+</ul>
+{% endblock  %}

@@ -3,6 +3,7 @@
     Create a post...
 {% endblock  %}
 {% block body_block %}
+{% if user.is_authenticated %}
 <h3>Add post...</h3>
 <div class="form-body">
     <form method="POST">
@@ -11,5 +12,9 @@
         <button class="btn btn-secondary">Add post</button>
     </form>
 </div>
+{% else %}
+<div class="alert alert-danger">You're not allowed to see this and you know it! :( </div>
+{% endif %}
+
 
 {% endblock  %}

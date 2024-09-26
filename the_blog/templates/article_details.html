@@ -1,10 +1,17 @@
 {% extends "base.html" %}
 {% block title_block %}{{ post.post_heading }}{% endblock  %}
 {% block body_block %}
+
 <h2>{{ post.title }}</h2>
-<small>By: {{post.author}} - <a href="{% url 'update-post' post.pk %}">(Edit)</a></small>
+<small>By: {{post.author}} - {{ post.post_date }}</small>
+{% if user.is_authenticated %}
+<div class="d-flex">
+    <a href="{% url 'update-post' post.pk %}" class="btn btn-warning" >Edit Post</a>
+    <a href="{% url 'delete-post' post.pk %}" class="btn btn-danger ms-2" >Delete Post</a>
+</div>
+{% endif %}
 <hr>
-<p>{{post.body}}</p>
+<p>{{post.body|safe}}</p>
 <br>
 <a href="{% url 'home' %}" class="btn btn-secondary"> Back </a>
 {% endblock  %}
